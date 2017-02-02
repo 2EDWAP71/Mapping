@@ -4,12 +4,49 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<org.osmdroid.views.MapView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:enabled="true"
-    android:clickable="true"
-    android:id="@+id/map1"
-    titlesource="Mapnik"
-    />
+
+
+
+
+    <EditText
+        android:id="@+id/Latitude_editText1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="Latitude" />
+
+
+
+    <EditText
+        android:id="@+id/Longlitude_editText2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Longlitude"
+        android:singleLine="true"
+        android:selectAllOnFocus="true" />
+
+    <Button
+        android:id="@+id/BtnCamera"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text = "Search"
+        android:gravity = "center"
+        />
+
+
+
+    <org.osmdroid.views.MapView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:enabled="true"
+        android:clickable="true"
+        android:id="@+id/map1"
+        titlesource="Mapnik"
+        />
+
+
+
+
+
+
 </LinearLayout>
