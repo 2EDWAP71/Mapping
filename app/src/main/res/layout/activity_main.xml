@@ -13,7 +13,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:text="Latitude" />
+        android:hint="Latitude" />
 
 
 
@@ -21,9 +21,9 @@
         android:id="@+id/Longlitude_editText2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Longlitude"
         android:singleLine="true"
-        android:selectAllOnFocus="true" />
+        android:selectAllOnFocus="true"
+        android:hint="Longitude" />
 
     <Button
         android:id="@+id/BtnCamera"

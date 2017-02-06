@@ -11,6 +11,15 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
+
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
+import android.content.Intent;
+
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+
 public class HelloMap extends Activity
     implements View.OnClickListener {
 
@@ -56,6 +65,48 @@ public class HelloMap extends Activity
         double longitude = Double.parseDouble(longitudeEditText.getText().toString());
 
         mv.getController().setCenter(new GeoPoint(latitude, longitude));
+    }
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater=getMenuInflater();//menu inflater reads in the xml file. inflates and generates a menu object
+        inflater.inflate(R.menu.menu_hello_map, menu);
+
+        return true;//successful
+    }//loads the menu from the xml file and generates a menu from it
+    public boolean onOptionsItemSelected(MenuItem item)//when user selects a menu entry
+    {
+        if(item.getItemId() == R.id.choosemap)//gets the menu ID
+        {
+
+            Intent intent = new Intent(this,MapChooseActivity.class);
+            startActivityForResult(intent,0);
+            // react to the menu item being selected...
+            //'System.exit(0);' -exits the application
+            return true;
+        }
+        return false;
+    }
+
+    protected void onActivityResult(int requestCode,int resultCode,Intent intent)
+    {
+
+        if(requestCode==0)
+        {
+
+            if (resultCode==RESULT_OK)
+            {
+                Bundle extras=intent.getExtras();
+                boolean cyclemap = extras.getBoolean("com.example.cyclemap");
+                if(cyclemap==true)
+                {
+                    mv.setTileSource(TileSourceFactory.CYCLEMAP);
+                }
+                else
+                {
+                    mv.getTileProvider().setTileSource(TileSourceFactory.MAPNIK);
+                }
+            }
+        }
     }
 }
 
