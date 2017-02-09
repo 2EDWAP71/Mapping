@@ -24,6 +24,10 @@
 
         <activity android:name=".MapChooseActivity" android:label="@string/choosemap">
         </activity>
+        <activity android:name=".Set_Location" android:label="Latitude and Longitude">
+
+            </activity>
+
     </application>
 
 

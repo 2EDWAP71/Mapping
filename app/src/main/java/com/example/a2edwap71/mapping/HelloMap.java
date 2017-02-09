@@ -84,6 +84,14 @@ public class HelloMap extends Activity
             //'System.exit(0);' -exits the application
             return true;
         }
+        if (item.getItemId() == R.id.latandlon)//gets the menu ID
+        {
+
+            Intent intent = new Intent(this, Set_Location.class);
+            startActivityForResult(intent, 1);
+            return true;
+
+        }
         return false;
     }
 
@@ -107,7 +115,18 @@ public class HelloMap extends Activity
                 }
             }
         }
+        if(requestCode==1){
+            if(resultCode==RESULT_OK){
+                Bundle extras1=intent.getExtras();
+                double Latitude=extras1.getDouble("com.example.Latitude");
+                double Longitude=extras1.getDouble("com.example.Longitude");
+
+                mv.getController().setCenter(new GeoPoint(Latitude, Longitude));
+            }
+        }
     }
+
+
 }
 
 
