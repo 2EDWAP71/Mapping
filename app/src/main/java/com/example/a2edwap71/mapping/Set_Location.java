@@ -10,6 +10,10 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.widget.Button;
 import android.view.View;
+import android.widget.EditText;
+
+
+
 
 
 public class Set_Location extends Activity  implements View.OnClickListener {
@@ -27,10 +31,18 @@ public class Set_Location extends Activity  implements View.OnClickListener {
         Bundle bundle=new Bundle();//data that passes between Activities
         boolean button = false;
 
-        if (view.getId() == R.id.button){
+        EditText Latitude = (EditText) findViewById(R.id.Latitude);
+        double latitude = Double.parseDouble(Latitude.getText().toString());
+        bundle.putDouble("com.example.Latitude", latitude);
 
-            button=true;
-        }
+
+        EditText Longitude = (EditText) findViewById(R.id.Longitude);
+        double longitude = Double.parseDouble(Longitude.getText().toString());
+        bundle.putDouble("com.example.Longitude", longitude);
+
+
+
+
         bundle.putBoolean("com.example.button",button);
         intent.putExtras(bundle);
 

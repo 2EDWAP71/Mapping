@@ -21,7 +21,7 @@ import android.content.Intent;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 
 public class HelloMap extends Activity
-    implements View.OnClickListener {
+     {
 
 
     //extends-where the file is from as well
@@ -43,8 +43,7 @@ public class HelloMap extends Activity
         mv = (MapView) findViewById(R.id.map1);
         //finds map1
 
-        Button submitButton = (Button) findViewById(R.id.BtnCamera);
-        submitButton.setOnClickListener(this);
+
 
         mv.setBuiltInZoomControls(true);
         //given zoom controls
@@ -57,15 +56,7 @@ public class HelloMap extends Activity
 
 
     @Override
-    public void onClick(View view) {
-        EditText latitudeEditText = (EditText) findViewById(R.id.Latitude_editText1);
-        double latitude = Double.parseDouble(latitudeEditText.getText().toString());
 
-        EditText longitudeEditText = (EditText) findViewById(R.id.Longlitude_editText2);
-        double longitude = Double.parseDouble(longitudeEditText.getText().toString());
-
-        mv.getController().setCenter(new GeoPoint(latitude, longitude));
-    }
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater=getMenuInflater();//menu inflater reads in the xml file. inflates and generates a menu object
