@@ -39,7 +39,7 @@ public class Set_Location extends Activity  implements View.OnClickListener {
         EditText Longitude = (EditText) findViewById(R.id.Longitude);
         double longitude = Double.parseDouble(Longitude.getText().toString());
         bundle.putDouble("com.example.Longitude", longitude);
-
+        //reads the string for longitude and puts it in a bundle for use in first activity
 
 
 
