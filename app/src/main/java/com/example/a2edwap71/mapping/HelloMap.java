@@ -66,10 +66,10 @@ public class HelloMap extends Activity
     }//loads the menu from the xml file and generates a menu from it
     public boolean onOptionsItemSelected(MenuItem item)//when user selects a menu entry
     {
-        if(item.getItemId() == R.id.choosemap)//gets the menu ID
+        if(item.getItemId() == R.id.listview)//gets the menu ID
         {
 
-            Intent intent = new Intent(this,MapChooseActivity.class);
+            Intent intent = new Intent(this,ChooseListActivity.class);
             startActivityForResult(intent,0);
             // react to the menu item being selected...
             //'System.exit(0);' -exits the application
@@ -83,6 +83,8 @@ public class HelloMap extends Activity
             return true;
 
         }
+
+
         return false;
     }
 

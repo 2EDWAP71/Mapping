@@ -27,6 +27,9 @@
         <activity android:name=".Set_Location" android:label="Latitude and Longitude">
 
             </activity>
+        <activity android:name="ChooseListActivity" android:label="@string/listview">
+
+        </activity>
 
     </application>
 
