@@ -24,9 +24,10 @@ public class ChooseListActivity extends ListActivity
         super.onCreate(savedInstanceState);
         names = new String[] { "Regular Map View","Cycle Map View" };
         details = new String[]{"Generates normal map view" , "Shows all possible cycle routes in the area"};
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, names);
+        MyAdapter adapter = new MyAdapter();
         setListAdapter(adapter);
+
+
     }
 
 
@@ -45,6 +46,30 @@ public void onListItemClick(ListView lv, View view, int index, long id)
             finish();
         }
         // handle list item selection
+
+
+
+    public class MyAdapter extends ArrayAdapter<String>
+    {
+        public MyAdapter()
+        {
+            // We have to use ExampleListActivity.this to refer to the outer class (the activity)
+            super(ChooseListActivity.this, android.R.layout.simple_list_item_1, names);
+
+        }
+
+        public View getView(int index, View convertView, ViewGroup parent)
+        {
+            LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.list_activity, parent, false);
+            TextView title = (TextView)view.findViewById(R.id.poi_name), detail =
+                    (TextView)view.findViewById(R.id.poi_desc);
+            title.setText(names[index]);
+            detail.setText(details[index]);
+            return view;
+        }
+    }
+
         }
 
 

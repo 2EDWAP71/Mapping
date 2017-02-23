@@ -4,4 +4,5 @@
     <item android:id="@+id/choosemap" android:title="@string/choosemap"/>
     <item android:id="@+id/latandlon" android:title="@string/latandlon"/>
     <item android:id="@+id/listview" android:title="@string/listview"/>
+    <item android:id="@+id/preferences" android:title="Preferences"/>
 </menu>

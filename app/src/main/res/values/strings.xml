@@ -6,4 +6,5 @@
     <string name="cyclemapview">Cycle Map View </string>
     <string name="latandlon">Latitude and Longitude </string>
     <string name="listview"> List View</string>
+
 </resources>

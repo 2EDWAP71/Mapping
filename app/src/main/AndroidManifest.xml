@@ -30,6 +30,7 @@
         <activity android:name="ChooseListActivity" android:label="@string/listview">
 
         </activity>
+        <activity android:name=".MyPrefsActivity" android:label="preferences"></activity>
 
     </application>
 
