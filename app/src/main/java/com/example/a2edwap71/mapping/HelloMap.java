@@ -85,6 +85,12 @@ public class HelloMap extends Activity
             return true;
 
         }
+        if(item.getItemId() == R.id.preferences)
+        {
+            Intent intent = new Intent (this,MyPrefsActivity.class);
+            startActivityForResult(intent,2);
+            return true;
+        }
 
 
         return false;
@@ -126,12 +132,28 @@ public class HelloMap extends Activity
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         double lat = Double.parseDouble (prefs.getString("lat", "50.9"));
         double lon = Double.parseDouble(prefs.getString("lon", "-1.4"));
+        int zoom = Integer.parseInt(prefs.getString("zoom","14"));
+
+        mv.getController().setCenter(new GeoPoint(lat,lon));
+        mv.getController().setZoom(zoom);
+
+
+
+
     }
+        public void onDestroy(){
+             super.onDestroy();
+             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+             SharedPreferences.Editor editor = prefs.edit();
+             editor.putString("zoom",""+mv.getZoomLevel());
+             editor.commit();
+       }
 
 
 
 
-     }
+
+}
 
 
 

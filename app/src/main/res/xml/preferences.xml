@@ -2,6 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference android:key="lat" android:defaultValue="50.9" android:title="Latitude" android:summary="Latitude to show the map at initially." />
     <EditTextPreference android:key="lon" android:defaultValue="-1.4" android:title="Longitude" android:summary="Longitude to show the map at initially." />
-    <EditTextPreference android:key="zoom"  android:defaultValue="50.9,-1.4" android:title="Zoom Level" android:summary="Displays Zoom Level" />
-
+    <EditTextPreference android:key="zoom"  android:defaultValue="14" android:title="Zoom Level" android:inputType="number" android:summary="Displays Zoom Level" />
+    <ListPreference android:key="map" android:title="Type of Map" android:summary="Choose from Regular View or Cycle map View"
+        android:entries="@array/mapView" android:entryValues="@array/cycleMapCode"/>
 </PreferenceScreen>
