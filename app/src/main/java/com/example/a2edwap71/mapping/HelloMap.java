@@ -134,6 +134,14 @@ public class HelloMap extends Activity
         double lon = Double.parseDouble(prefs.getString("lon", "-1.4"));
         int zoom = Integer.parseInt(prefs.getString("zoom","14"));
 
+
+        String mapTypeCode =prefs.getString("map","none");
+        if (mapTypeCode.equals("RMV")){
+            mv.setTileSource(TileSourceFactory.MAPNIK);
+        }
+        if (mapTypeCode.equals("CMV")){
+            mv.getTileProvider().setTileSource(TileSourceFactory.CYCLEMAP);
+        }
         mv.getController().setCenter(new GeoPoint(lat,lon));
         mv.getController().setZoom(zoom);
 
