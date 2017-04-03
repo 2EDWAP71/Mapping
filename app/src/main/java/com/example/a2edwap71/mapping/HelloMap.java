@@ -3,10 +3,16 @@ package com.example.a2edwap71.mapping;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import android.widget.Toast;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.OverlayItem;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
@@ -30,6 +36,9 @@ public class HelloMap extends Activity
 
 
     MapView mv;
+         ItemizedIconOverlay<OverlayItem> items;
+         ItemizedIconOverlay.OnItemGestureListener<OverlayItem> markerGestureListener;
+
 
     public void onCreate(Bundle savedInstanceState)
     //onCreate sets this code when first launched
@@ -53,8 +62,50 @@ public class HelloMap extends Activity
         mv.getController().setCenter(new GeoPoint(51.05, -0.72));
         //sets position of map
 
+        markerGestureListener = new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>(){
+            public boolean onItemLongPress (int i, OverlayItem item){
+                Toast.makeText(HelloMap.this, item.getSnippet(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            public boolean onItemSingleTapUp (int i, OverlayItem item) {
+                Toast.makeText(HelloMap.this, item.getSnippet(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        };
+
+        items = new ItemizedIconOverlay<OverlayItem>(this, new ArrayList<OverlayItem>(), markerGestureListener);
+        OverlayItem southampton = new OverlayItem("Southampton" , "City of Southampton" , new GeoPoint(50.9097,-1.4044 ));
+
+        items.addItem(southampton);
+        items.addItem(new OverlayItem("Bargate ", "Historical Site", new GeoPoint(50.9026,-1.4041)));
+        mv.getOverlays().add(items);
+
+        try {
+
+
+            BufferedReader reader = new BufferedReader(new FileReader(Environment.getExternalStorageDirectory().getAbsolutePath()+
+                    "/poi.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] components = line.split(",");
+                if (components.length==5){
+
+                    OverlayItem currentPoi = new OverlayItem(components[0],components[2],
+                            new GeoPoint( Double.parseDouble (components[4]) , Double.parseDouble(components[3]) ));
+                            items.addItem(currentPoi);
+                }
+            }
+
+        }
+        catch(IOException e){
+            System.out.println("ERROR:" + e);
+        }
 
     }
+
+
+
+
 
 
     @Override
